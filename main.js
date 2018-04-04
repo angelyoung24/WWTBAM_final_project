@@ -1,22 +1,46 @@
-// var seconds;
-// var final; 
+var seconds;
+var final; 
 
 // timer counts down from 60
-// function timer() {
-//     var seconds = document.getElementById('timer').innerHTML;
-//     var seconds = parseInt(seconds, 60);
+function timer() {
+    var seconds = document.getElementById('timer').innerHTML;
+    var secondHTML = parseInt(seconds, 60);
     
-//     if (seconds == 1) {
-//         var final = document.getElementById('timer').innerHTML = "Game Over";;
-//         return;
-//     }
+    if (seconds == 1) {
+        var final = document.getElementById('timer').innerHTML = "Game Over";;
+        return;
+    }
 
-//     seconds--;
-//     final = document.getElementById('timer');
-//     final.innerHTML = seconds;
-//     countdown = setTimeout(timer, 1000);
-// }
-// timer();
+    seconds--;
+    final = document.getElementById('timer');
+    final.innerHTML = seconds;
+    countdown = setTimeout(timer, 1000);
+}
+timer();
+
+
+var easy = [
+    {
+    question: "What american childrens tv series features a character named Big Bird?",
+        choice:{
+            choice0: "Caillou",
+            choice1: "The Fresh Beat Band",
+            choice2: "Sesame Street",
+            choice3: "ABC Afterschool Special",
+        },
+            correctChoice: 2
+    }, {
+    question: "What soap opera features Erica Kane?",
+        choice:{
+            choice0: "All My Children",
+            choice1: "The Bold and the Beautiful",
+            choice2: "EastEnders",
+            choice3: "Teen Mom OG",
+    },
+            correctChoice: 0
+    }        
+]
+
 
 
 // selects random question from easy.js
@@ -34,11 +58,13 @@ var showChoice2 = document.getElementById("choice2");
 var showChoice3 = document.getElementById("choice3");
 
 // loop through an array to target a question
-var question = [] 
-    for (var i = 0; i < currentQuestion; i++) {
-    question[i]
-} console.log(question)
+var question = []; 
+    for (var i = 0; i < currentQuestion.length; i++) {
+    question[i] = " ";
+        console.log(question)
+} 
 
+showQuestion.innerText = question.join(" ");
 
 
 
