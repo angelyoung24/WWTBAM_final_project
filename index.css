@@ -17,13 +17,18 @@
     border: 1px solid black;
 }
 
+.timerstyle{
+    text-align: center;
+}
+
 .questionstyle {
     padding:28px;
-    font-size: 67px;
+    font-size: 25px;
     background: blueviolet;
     border-radius: 28px;
     margin: 10px 0 18px 0;
-    color: aquamarine;
+    color: white;
+    text-align: center;
 }
 
 .choice {
@@ -33,6 +38,11 @@
     vertical-align: middle;
     background: indigo;
     border-radius: 28px;
+    text-align: center;
+}
+
+.choicestyle {
+    color: white;
 }
 
 .choice:hover {

@@ -1,3 +1,5 @@
+// 
+
 var seconds;
 var final; 
 
@@ -45,12 +47,14 @@ var easy = [
 
 // selects random question from easy.js
 var random = Math.floor(Math.random() * easy.length);
-
-var currentQuestion = easy[random].question;
-var currentChoice0 = easy[random].choice0;
-var currentChoice1 = easy[random].choice1;
-var currentChoice2 = easy[random].choice2;
-var currentChoice3 = easy[random].choice3;
+var current = easy[random]
+var currentQuestion = current.question; //question
+// the 4 choices in order of their place in a for loop
+var currentChoice0 = current.choice.choice0;
+var currentChoice1 = current.choice.choice1;
+var currentChoice2 = current.choice.choice2;
+var currentChoice3 = current.choice.choice3;
+// id targets from html page
 var showQuestion = document.getElementById("question");
 var showChoice0 = document.getElementById("choice0");
 var showChoice1 = document.getElementById("choice1");
@@ -61,10 +65,36 @@ var showChoice3 = document.getElementById("choice3");
 var question = []; 
     for (var i = 0; i < currentQuestion.length; i++) {
     question[i] = " ";
-        console.log(question)
+        // console.log(question)
 } 
+// shows current question
+showQuestion.innerText = currentQuestion
 
-showQuestion.innerText = question.join(" ");
+// loop through an array to target a choice
+var choice = [];
+for (var i = 0; i < currentChoice0.length; i++) {
+    choice[i] = " ";
+} console.log(choice);
 
+var choice = [];
+for (var i = 0; i < currentChoice1.length; i++) {
+    choice[i] = " ";
+} console.log(choice);
 
+var choice = [];
+for (var i = 0; i < currentChoice2.length; i++) {
+    choice[i] = " ";
+} console.log(choice);
+
+var choice = [];
+for (var i = 0; i < currentChoice3.length; i++) {
+    choice[i] = " ";
+} console.log(choice);
+
+showChoice0.innerText = currentChoice0
+showChoice1.innerText = currentChoice1
+showChoice2.innerText = currentChoice2
+showChoice3.innerText = currentChoice3
+
+// target the correct answer
 
