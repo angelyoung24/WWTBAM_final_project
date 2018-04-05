@@ -9,7 +9,7 @@ function timer() {
     var secondHTML = parseInt(seconds, 60);
     
     if (seconds == 1) {
-        var final = document.getElementById('timer').innerHTML = "Game Over";;
+        var final = document.getElementById('timer').innerHTML = "Game Over";
         return;
     }
 
@@ -42,7 +42,28 @@ var easy = [
         },
         correctChoice: this.choice0,
          
-    }        
+    }, 
+        {
+        question: "Which american daytime talk show host is famous for paternal DNA tests?",
+        choice: {
+            choice0: "Jenny Jones",
+            choice1: "Jeremy Kyle",
+            choice2: "Steve Harvey",
+            choice3: "Maury Povich",
+        },
+        correctChoice: this.choice3,
+
+    }, {
+        question: "Which HBO drama is based on the book A Song of Ice and Fire?",
+        choice: {
+            choice0: "Game of Thrones",
+            choice1: "The Sopranos",
+            choice2: "Insecure",
+            choice3: "Girls",
+        },
+        correctChoice: this.choice0,
+
+    }         
 ]
 
 
@@ -65,6 +86,7 @@ var showChoice0 = document.getElementById("choice0");
 var showChoice1 = document.getElementById("choice1");
 var showChoice2 = document.getElementById("choice2");
 var showChoice3 = document.getElementById("choice3");
+
 
 // loop through an array to target a question
 var question = []; 
@@ -108,7 +130,12 @@ for (var i = 0; i < currentCorrectChoice.length; i++) {
     correctChoice[i] = " ";
 } console.log(correctChoice);
 
-// probably pulling inner.html rather than the value
+// if incorrrect answer end game
+// else proceede to next question
+
+function correctAnswer() {
+    
+}
 
 
 
