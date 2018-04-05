@@ -20,12 +20,12 @@ function timer() {
 }
 timer();
 
-
+// choice0,1,2,3 are strings
 var easy = [
     {
     question: "What american childrens tv series features a character named Big Bird?",
         choice:{
-            choice0: "Caillou",
+            choice0: "Caillou", 
             choice1: "The Fresh Beat Band",
             choice2: "Sesame Street",
             choice3: "ABC Afterschool Special",
@@ -72,6 +72,9 @@ var easy = [
 var random = Math.floor(Math.random() * easy.length);
 var current = easy[random]
 var currentQuestion = current.question; //question
+// target currentChoice
+var currentChoice = current.choice
+
 // the 4 choices in order of their place in a for loop
 var currentChoice0 = current.choice.choice0;
 var currentChoice1 = current.choice.choice1;
@@ -118,6 +121,11 @@ for (var i = 0; i < currentChoice3.length; i++) {
     choice[i] = " ";
 } console.log(choice);
 
+var choice = [];
+for (var i = 0; i < currentChoice.length; i++) {
+    choice[i] = " ";
+} console.log(choice);
+
 // shows choice options which connect to the current question
 showChoice0.innerText = currentChoice0
 showChoice1.innerText = currentChoice1
@@ -133,9 +141,21 @@ for (var i = 0; i < currentCorrectChoice.length; i++) {
 // if incorrrect answer end game
 // else proceede to next question
 
-function correctAnswer() {
-    
+function checkCorrectAnswer(choice) {
+    for (var i = 0; i < currentChoice.length; i++) {
+        if (choice === currentChoice[i]) {
+
+        } else {
+            gameOver();
+        }
+    }
 }
 
+function gameOver() {
+    // code for incorrect answer
+    // code for timer
+}
+// check strings to compare if answer is correct
+// addEventListeners to all the buttons
 
 
