@@ -19,6 +19,9 @@
 
 .timerstyle{
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: blue;
+    font-size: 2em;
 }
 
 .questionstyle {
@@ -41,7 +44,7 @@
     text-align: center;
 }
 
-.choicestyle {
+.choicetextstyle {
     color: white;
 }
 
