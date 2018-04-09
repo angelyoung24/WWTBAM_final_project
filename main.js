@@ -1,22 +1,25 @@
-// 
+// timer is commented out because it will crash the browser
 
-var seconds;
-var final; 
+var final, secondHTML;
+var seconds = document.getElementById('timer').innerHTML;
+var final = document.getElementById('timer').innerHTML;
 
 // timer counts down from 60
 function timer() {
     var seconds = document.getElementById('timer').innerHTML;
-    var secondHTML = parseInt(seconds, 60);
-    
-    if (seconds == 1) {
-        var final = document.getElementById('timer').innerHTML = "Game Over";
+    secondHTML = parseInt(seconds, 60);
+// 
+    if (seconds === 1) {
+        final = "Game Over";
+        secondHTML = parseInt(seconds, 60);
         return;
     }
 
     seconds--;
     final = document.getElementById('timer');
     final.innerHTML = seconds;
-    countdown = setTimeout(timer, 1000);
+    countdown = setInterval(timer, 1000);
+    clearInterval(countdown);
 }
 timer();
 
@@ -63,99 +66,92 @@ var easy = [
         },
         correctChoice: this.choice0,
 
-    }         
+    }, 
+     {
+        question: "Who is not the name of a character on Breaking Bad?",
+        choice: {
+            choice0: "Walter White",
+            choice1: "Oggi 'Coca-Cola' Danailov",
+            choice2: "Krazy-8",
+            choice3: "Gus Fring",
+        },
+        correctChoice: this.choice1,
+
+    }        
 ]
 
+var random, current, currentQuestion, currentChoice0, currentChoice1, currentChoice2, currentChoice3, currentCorrectChoice, showChoice0, showChoice1, showChoice2, showChoice3, showQuestion;
+
+// when document loads it fires this function below then on correct answer it fires it again
+function setQuestion(){
+    // selects random question from var easy
+    random = Math.floor(Math.random() * easy.length);
+    current = easy[random]
+    //question
+    currentQuestion = current.question;
+    // the 4 choices in order of their place in a for loop
+    currentChoice0 = current.choice.choice0;
+    currentChoice1 = current.choice.choice1;
+    currentChoice2 = current.choice.choice2;
+    currentChoice3 = current.choice.choice3;
+
+    // the correct choice
+    currentCorrectChoice = current.correctChoice;
+    // id targets from html page
+    showQuestion = document.getElementById("question");
+    showChoice0 = document.getElementById("choice0");
+    showChoice1 = document.getElementById("choice1");
+    showChoice2 = document.getElementById("choice2");
+    showChoice3 = document.getElementById("choice3");
 
 
-// selects random question from var easy
-var random = Math.floor(Math.random() * easy.length);
-var current = easy[random]
-var currentQuestion = current.question; //question
-// target currentChoice
-var currentChoice = current.choice
 
-// the 4 choices in order of their place in a for loop
-var currentChoice0 = current.choice.choice0;
-var currentChoice1 = current.choice.choice1;
-var currentChoice2 = current.choice.choice2;
-var currentChoice3 = current.choice.choice3;
-
-// the correct choice
-var currentCorrectChoice = current.correctChoice;
-// id targets from html page
-var showQuestion = document.getElementById("question");
-var showChoice0 = document.getElementById("choice0");
-var showChoice1 = document.getElementById("choice1");
-var showChoice2 = document.getElementById("choice2");
-var showChoice3 = document.getElementById("choice3");
+    // shows current question
+    showQuestion.innerText = currentQuestion
 
 
-// loop through an array to target a question
-var question = []; 
-    for (var i = 0; i < currentQuestion.length; i++) {
-    question[i] = " ";
-        // console.log(question)
-} 
-// shows current question
-showQuestion.innerText = currentQuestion
+    // shows choice options which connect to the current question
+    showChoice0.innerText = currentChoice0
+    showChoice1.innerText = currentChoice1
+    showChoice2.innerText = currentChoice2
+    showChoice3.innerText = currentChoice3
 
-// loop through an array to target a choice
-var choice = [];
-for (var i = 0; i < currentChoice0.length; i++) {
-    choice[i] = " ";
-} console.log(choice);
 
-var choice = [];
-for (var i = 0; i < currentChoice1.length; i++) {
-    choice[i] = " ";
-} console.log(choice);
+}
+setQuestion()
 
-var choice = [];
-for (var i = 0; i < currentChoice2.length; i++) {
-    choice[i] = " ";
-} console.log(choice);
 
-var choice = [];
-for (var i = 0; i < currentChoice3.length; i++) {
-    choice[i] = " ";
-} console.log(choice);
-
-var choice = [];
-for (var i = 0; i < currentChoice.length; i++) {
-    choice[i] = " ";
-} console.log(choice);
-
-// shows choice options which connect to the current question
-showChoice0.innerText = currentChoice0
-showChoice1.innerText = currentChoice1
-showChoice2.innerText = currentChoice2
-showChoice3.innerText = currentChoice3
-
-// target the correct answer to match correct choice
-var correctChoice = [];
-for (var i = 0; i < currentCorrectChoice.length; i++) {
-    correctChoice[i] = " ";
-} console.log(correctChoice);
-
-// if incorrrect answer end game
-// else proceede to next question
 
 function checkCorrectAnswer(choice) {
-    for (var i = 0; i < currentChoice.length; i++) {
-        if (choice === currentChoice[i]) {
 
-        } else {
-            gameOver();
-        }
+    if(choice === current.correctChoice.innerText){
+        setQuestion()
+        console.log('win')
+    } else {
+        console.log('lose')
+        final.innerHTML = "Game Over";
     }
 }
 
 function gameOver() {
-    // code for incorrect answer
-    // code for timer
+    // 
 }
 // check strings to compare if answer is correct
 // addEventListeners to all the buttons
 
-
+showChoice0.addEventListener("click", function () {
+    choice = showChoice0.innerText
+    checkCorrectAnswer(choice)
+});
+showChoice1.addEventListener("click", function () {
+    choice = showChoice1.innerText
+    checkCorrectAnswer(choice)
+});
+showChoice2.addEventListener("click", function () {
+    choice = showChoice2.innerText
+    checkCorrectAnswer(choice)
+});
+showChoice3.addEventListener("click", function () {
+    choice = showChoice3.innerText
+    checkCorrectAnswer(choice)
+});
