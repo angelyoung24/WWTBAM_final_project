@@ -1,7 +1,7 @@
 
 
 .title {
-    font-family: 'Allura', cursive;
+    font-family: 'Allura', Arial, Helvetica, sans-serif;
     padding-top: 20px;
     text-align: center;
     font-size: 34px;
@@ -46,6 +46,7 @@
 
 .choicetextstyle {
     color: white;
+    font-size: 18px;
 }
 
 .choice:hover {
