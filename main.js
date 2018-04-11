@@ -5,23 +5,27 @@ var seconds = document.getElementById('timer').innerHTML;
 var final = document.getElementById('timer').innerHTML;
 
 // timer counts down from 60
-function timer() {
-    var seconds = document.getElementById('timer').innerHTML;
-    secondHTML = parseInt(seconds, 60);
-// 
-    if (seconds === 1) {
-        final = "Game Over";
-        secondHTML = parseInt(seconds, 60);
-        return;
-    }
+function countdown(minutes) {
+    var seconds = 60;
+    var mins = minutes
+    function tick() {
 
-    seconds--;
-    final = document.getElementById('timer');
-    final.innerHTML = seconds;
-    countdown = setInterval(timer, 1000);
-    clearInterval(countdown);
+        var counter = document.getElementById("timer");
+
+        seconds--;
+        counter.innerHTML = (seconds < 10 ? "0" : "") + String(seconds);
+        if (seconds > 0) {
+            setTimeout(tick, 1000);
+            
+        } else {
+            if (mins > 1) {
+                countdown(mins - 1);
+            }
+        }
+    }
+    tick();
 }
-timer();
+countdown();
 
 // choice0,1,2,3 are strings
 var easy = [
@@ -129,6 +133,8 @@ function checkCorrectAnswer(choice) {
         console.log('win')
     } else {
         console.log('lose')
+        tick()
+        countdown()
         final.innerHTML = "Game Over";
     }
 }
